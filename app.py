@@ -32,6 +32,7 @@ def move_files(source_folder, target_folders):
         if os.path.isfile(file_path) and is_csv_or_sa_file(file):  
             file_name = os.path.basename(file_path)
 
+            # Add your own exemption names in the list
             if file_name in {"OFFICE_STATIC.csv", "OFFICE_ERS.csv", "OFFICE_STATIC.sa",  "OFFICE_ERS.sa"}:
                 continue  
 
