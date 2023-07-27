@@ -2,6 +2,9 @@ import os
 import shutil
 # import datetime
 
+"""
+Script to clear your desktop of csv & Spatial Analyzer files
+"""
 
 def main():
     desktop_path = os.path.expanduser("~\OneDrive\Desktop")
@@ -22,15 +25,15 @@ def main():
 
 def move_files(source_folder, target_folders):
     # start = datetime.datetime.now()
-    files = os.listdir(source_folder)  # List all files in the source folder
+    files = os.listdir(source_folder)  
 
     for file in files:
         file_path = os.path.join(source_folder, file)
-        if os.path.isfile(file_path) and is_csv_file(file):  # Check if it's a file (not a folder) and if it's a CSV file
+        if os.path.isfile(file_path) and is_csv_or_sa_file(file):  
             file_name = os.path.basename(file_path)
 
             if file_name in {"OFFICE_STATIC.csv", "OFFICE_ERS.csv", "OFFICE_STATIC.sa",  "OFFICE_ERS.sa"}:
-                continue  # Skip moving "OFFICE_STATIC.csv"
+                continue  
 
             _, extension = os.path.splitext(file_name)
             if extension.lower() in target_folders:
@@ -38,13 +41,13 @@ def move_files(source_folder, target_folders):
                 os.makedirs(target_path, exist_ok=True)
                 shutil.move(file_path, os.path.join(target_path, file_name))
                 print(f"Moved {file_name} to {target_path}")
+    
     # finish = datetime.datetime.now()
-    print (finish-start)
+    # print (finish-start)
 
-def is_csv_file(file_name):
+def is_csv_or_sa_file(file_name):
     _, extension = os.path.splitext(file_name)
-    print(extension.lower() == '.csv')
-    return extension.lower() == '.csv'
+    return extension.lower() in {'.csv', '.sa'}
 
 
 if __name__ == "__main__":
