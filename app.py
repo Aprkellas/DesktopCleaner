@@ -31,9 +31,9 @@ def move_files(source_folder, target_folders):
         file_path = os.path.join(source_folder, file)
         if os.path.isfile(file_path) and is_csv_or_sa_file(file):  
             file_name = os.path.basename(file_path)
+            file_name_uppercase = file_name.upper()
 
-            # Add your own exemption names in the list
-            if file_name in {"OFFICE_STATIC.csv", "OFFICE_ERS.csv", "OFFICE_STATIC.sa",  "OFFICE_ERS.sa"}:
+            if "OFFICE_STATIC" in file_name_uppercase or "OFFICE_ERS" in file_name_uppercase:
                 continue  
 
             _, extension = os.path.splitext(file_name)
