@@ -10,7 +10,7 @@ def main():
     desktop_path = os.path.expanduser("~\OneDrive\Desktop")
     organize_folders = {
         '.csv': os.path.join(desktop_path, "CSV Archive"),
-        '.sa': os.path.join(desktop_path, "SA Archive")
+        '.xit64': os.path.join(desktop_path, "SA Archive")
     }
 
      
@@ -58,7 +58,7 @@ def move_files(source_folder, target_folders):
 
 def is_csv_or_sa_file(file_name):
     _, extension = os.path.splitext(file_name)
-    return extension.lower() in {'.csv', '.sa'}
+    return extension.lower() in {'.csv', '.xit64'}
 
 def move_folders(source_folder, archive_folder):
     with os.scandir(source_folder) as folders:
@@ -97,4 +97,8 @@ def move_to_archive(source_folder, archive_folder, versions_dict):
 
 
 if __name__ == "__main__":
+    # start = datetime.datetime.now()
     main()
+    # finish = datetime.datetime.now()
+    # print (finish-start)
+    input("Press Enter to Exit...")
