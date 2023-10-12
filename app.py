@@ -7,7 +7,7 @@ Script to clear your desktop of csv & Spatial Analyzer files
 """
 
 def main():
-    desktop_path = os.path.expanduser("./Desktop")
+    desktop_path = os.path.expanduser("DESKTOP/PATH")
     organize_folders = {
         '.csv': os.path.join(desktop_path, "CSV Files"),
         '.xit64': os.path.join(desktop_path, "SA Files")
@@ -70,7 +70,7 @@ def move_folders(source_folder, archive_folder):
                 folder_name = folder.name
                 folder_name_uppercase = folder_name.upper()
 
-                if "DEV" in folder_name_uppercase or "NIGHTLY" in folder_name_uppercase:
+                if "DEV" in folder_name_uppercase or "NIGHTLY" in folder_name_uppercase or "MOTOWN" in folder_name_uppercase:
                     continue
 
                 elif "ORA" in folder_name_uppercase:
